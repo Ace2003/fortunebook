@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>命运之书</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="main-container">
+        <!-- 书封面 -->
+        <div class="book-cover" id="bookCover">
+            <div class="book-shadow"></div>
+            <div class="book-spine"></div>
+            <div class="book-front">
+                <div class="book-decoration top-decoration"></div>
+                <div class="book-decoration bottom-decoration"></div>
+                <div class="book-title-container">
+                    <div class="book-title">命 运 之 书</div>
+                    <div class="book-subtitle">Book of Destiny</div>
+                </div>
+                <div class="book-center-emblem">
+                    <div class="emblem-outer-ring"></div>
+                    <div class="emblem-inner-circle"></div>
+                    <div class="emblem-star">✦</div>
+                </div>
+                <div class="book-prompt">点击翻开命运</div>
+            </div>
+        </div>
+
+        <!-- 加载动画 -->
+        <div class="loading-container" id="loadingContainer">
+            <div class="loading-content">
+                <div class="magic-circle">
+                    <div class="circle-ring ring-1"></div>
+                    <div class="circle-ring ring-2"></div>
+                    <div class="circle-ring ring-3"></div>
+                    <div class="magic-center">
+                        <div class="center-star">✦</div>
+                    </div>
+                </div>
+                <div class="loading-text">命运正在召唤...</div>
+                <div class="loading-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 翻页动画区域 -->
+        <div class="book-container" id="bookContainer">
+            <div class="book" id="book">
+                <div class="page page-cover" id="pageCover">
+                    <div class="page-content">
+                        <div class="cover-text">命运之书</div>
+                    </div>
+                </div>
+                <div class="page page-content" id="pageContent">
+                    <div class="page-inner">
+                        <div class="page-decoration top-decor"></div>
+                        <div class="page-decoration bottom-decor"></div>
+                        <div class="fortune-container">
+                            <div class="fortune-number" id="fortuneNumber">第 0 号命运</div>
+                            <div class="fortune-text" id="fortuneText">
+                                命运正在等待你的选择...
+                            </div>
+                            <div class="fortune-tag" id="fortuneTag">命运启示</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="book-shadow-static"></div>
+        </div>
+
+        <!-- 结果展示区域 -->
+        <div class="result-container" id="resultContainer">
+            <div class="result-card">
+                <div class="card-glow"></div>
+                <div class="card-decoration top-left"></div>
+                <div class="card-decoration top-right"></div>
+                <div class="card-decoration bottom-left"></div>
+                <div class="card-decoration bottom-right"></div>
+                
+                <div class="card-header">
+                    <div class="header-ornament left">✦</div>
+                    <div class="header-title">命运的启示</div>
+                    <div class="header-ornament right">✦</div>
+                </div>
+
+                <div class="card-content">
+                    <div class="fortune-number-display" id="fortuneNumberDisplay">第 0 号命运</div>
+                    <div class="fortune-divider">
+                        <div class="divider-line left"></div>
+                        <div class="divider-star">✦</div>
+                        <div class="divider-line right"></div>
+                    </div>
+                    <div class="fortune-message" id="fortuneMessage">
+                        命运正在等待你的选择...
+                    </div>
+                    <div class="fortune-category" id="fortuneCategory">
+                        <span class="category-icon">✦</span>
+                        <span class="category-text" id="categoryText">命运启示</span>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <button class="action-button" id="drawButton">
+                        <span class="button-icon">✦</span>
+                        <span class="button-text">抽取命运</span>
+                        <span class="button-icon">✦</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
