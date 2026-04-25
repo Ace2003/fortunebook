@@ -149,8 +149,187 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 30,
             text: "你是命运的主人，不是生活的奴隶。你的选择决定你的未来，勇敢地走自己的路。",
             tag: "命运自主"
+        },
+        {
+            id: 31,
+            text: "每一次呼吸都是新的开始，每一次心跳都是生命的礼物。活着本身就是一种奇迹。",
+            tag: "生命奇迹"
+        },
+        {
+            id: 32,
+            text: "当你感到迷茫时，不妨停下来看看周围的风景。答案往往在不经意间出现。",
+            tag: "迷途中的光"
+        },
+        {
+            id: 33,
+            text: "真诚是通往心灵的桥梁。用真诚待人，用真心做事，你会收获意想不到的美好。",
+            tag: "真诚之道"
+        },
+        {
+            id: 34,
+            text: "没有什么比当下更真实。过去已去，未来未至，唯有此刻是你真正拥有的。",
+            tag: "当下此刻"
+        },
+        {
+            id: 35,
+            text: "音乐是灵魂的语言。当你感到疲惫时，让美妙的旋律洗涤你的心灵，重新焕发活力。",
+            tag: "音乐治愈"
+        },
+        {
+            id: 36,
+            text: "大自然是最好的疗愈师。走进森林，聆听鸟鸣，感受阳光，你会发现内心的平静。",
+            tag: "自然疗愈"
+        },
+        {
+            id: 37,
+            text: "阅读是与智者对话的桥梁。翻开一本书，就是开启一段奇妙的心灵之旅。",
+            tag: "阅读之光"
+        },
+        {
+            id: 38,
+            text: "运动让身体充满活力，让心灵更加坚强。每天给自己一点时间，让身体和心灵都在路上。",
+            tag: "心灵活力"
+        },
+        {
+            id: 39,
+            text: "美食不仅满足味蕾，更滋养心灵。用心品味每一口食物，感受生活的美好滋味。",
+            tag: "美食慰藉"
+        },
+        {
+            id: 40,
+            text: "旅行是最好的教育。走出熟悉的环境，遇见不同的人和事，你的世界会因此更加广阔。",
+            tag: "旅行启智"
+        },
+        {
+            id: 41,
+            text: "自律是自由的前提。每天进步一点点，坚持下来，你会成为更好的自己。",
+            tag: "自律之路"
+        },
+        {
+            id: 42,
+            text: "理财是一种生活智慧。合理规划，理性消费，你会发现财富其实就在你身边。",
+            tag: "财富智慧"
+        },
+        {
+            id: 43,
+            text: "手工制作是一种治愈的方式。亲手创造一样东西，那份成就感是无法用金钱衡量的。",
+            tag: "手工之乐"
+        },
+        {
+            id: 44,
+            text: "摄影是用眼睛发现美，用镜头记录美。学会发现生活中的美好，每一天都是值得纪念的。",
+            tag: "发现美好"
+        },
+        {
+            id: 45,
+            text: "写作是与自己对话的方式。把心事写下来，你会发现思绪变得清晰，内心变得平静。",
+            tag: "文字疗愈"
+        },
+        {
+            id: 46,
+            text: "幽默是生活的调味剂。用微笑面对困难，用幽默化解尴尬，生活会变得轻松许多。",
+            tag: "幽默智慧"
+        },
+        {
+            id: 47,
+            text: "同理心是连接人心的纽带。站在他人的角度思考问题，你会收获更多的理解和友谊。",
+            tag: "同理之心"
+        },
+        {
+            id: 48,
+            text: "专注是成功的秘诀。一次只做一件事，全身心投入，你会发现效率大大提高。",
+            tag: "专注之力"
+        },
+        {
+            id: 49,
+            text: "冥想是与内心对话的方式。每天花几分钟静坐，感受呼吸，你会找到内心的平静。",
+            tag: "冥想静心"
+        },
+        {
+            id: 50,
+            text: "植物是沉默的朋友。照顾一盆绿植，看着它茁壮成长，你会感受到生命的力量。",
+            tag: "绿植疗愈"
+        },
+        {
+            id: 51,
+            text: "怀旧不是沉迷过去，而是珍惜曾经的美好。那些温暖的记忆，是你前行的力量。",
+            tag: "温暖记忆"
+        },
+        {
+            id: 52,
+            text: "探索未知是人类的本能。保持好奇心，勇于尝试新事物，生活会充满惊喜。",
+            tag: "探索未知"
+        },
+        {
+            id: 53,
+            text: "细节决定成败。关注生活中的每一个小细节，你会发现完美就在平凡之中。",
+            tag: "细节之美"
+        },
+        {
+            id: 54,
+            text: "合作是力量的倍增器。学会与他人合作，发挥各自的优势，1+1可以大于2。",
+            tag: "合作共赢"
+        },
+        {
+            id: 55,
+            text: "规划未来不是焦虑，而是为了更好地把握当下。设定目标，一步步前行，梦想终会实现。",
+            tag: "未来可期"
+        },
+        {
+            id: 56,
+            text: "每一天都是新的一页，你可以写下全新的故事。不要被过去定义，未来由你创造。",
+            tag: "崭新开始"
+        },
+        {
+            id: 57,
+            text: "真正的成熟是懂得温柔对待自己和他人。不再苛刻，不再强求，学会与生活和解。",
+            tag: "温柔成熟"
+        },
+        {
+            id: 58,
+            text: "沉默是金，有时候不说话比说更多更有力量。学会倾听，学会观察，智慧就在其中。",
+            tag: "沉默智慧"
+        },
+        {
+            id: 59,
+            text: "热情是生活的燃料。对生活保持热情，对工作保持热情，你会发现每一天都充满意义。",
+            tag: "热情之火"
+        },
+        {
+            id: 60,
+            text: "圆满不是终点，而是内心的满足。学会感恩，学会珍惜，你已经拥有了最珍贵的一切。",
+            tag: "圆满之心"
         }
     ];
+
+    // 不重复抽取的索引数组
+    let shuffledIndices = [];
+    let currentIndex = 0;
+
+    // Fisher-Yates 洗牌算法
+    function shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }
+
+    // 初始化/重置洗牌数组
+    function initShuffledIndices() {
+        const indices = [];
+        for (let i = 0; i < fortunebook.length; i++) {
+            indices.push(i);
+        }
+        shuffledIndices = shuffleArray(indices);
+        currentIndex = 0;
+    }
+
+    // 检查是否需要新一轮（用于提示）
+    function isNewRound() {
+        return currentIndex === 0 && shuffledIndices.length > 0;
+    }
 
     // 生成星空背景
     function createStars() {
@@ -246,10 +425,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 随机抽取命运
+    // 不重复抽取命运
     function drawFortune() {
-        const randomIndex = Math.floor(Math.random() * fortunebook.length);
-        return fortunebook[randomIndex];
+        // 如果洗牌数组为空或者已用完，重新初始化
+        if (shuffledIndices.length === 0 || currentIndex >= shuffledIndices.length) {
+            initShuffledIndices();
+        }
+        
+        const index = shuffledIndices[currentIndex];
+        currentIndex++;
+        
+        return fortunebook[index];
     }
 
     // 打开书的完整流程
@@ -580,6 +766,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 初始化事件监听
     function init() {
+        // 初始化洗牌数组
+        initShuffledIndices();
+        
         createStars();
         
         const bookCover = document.getElementById('bookCover');
