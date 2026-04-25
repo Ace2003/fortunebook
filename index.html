@@ -106,16 +106,37 @@
                 </div>
 
                 <div class="card-footer">
-                    <button class="action-button" id="drawButton">
-                        <span class="button-icon">✦</span>
-                        <span class="button-text">抽取命运</span>
-                        <span class="button-icon">✦</span>
-                    </button>
+                    <div class="button-group">
+                        <button class="action-button" id="drawButton">
+                            <span class="button-icon">✦</span>
+                            <span class="button-text">抽取命运</span>
+                            <span class="button-icon">✦</span>
+                        </button>
+                        <button class="share-button" id="shareButton">
+                            <span class="share-icon">📷</span>
+                            <span class="share-text">分享</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 重新抽取时的加载动画覆盖层 -->
+                <div class="redraw-overlay" id="redrawOverlay">
+                    <div class="redraw-magic-circle">
+                        <div class="redraw-ring ring-1"></div>
+                        <div class="redraw-ring ring-2"></div>
+                        <div class="redraw-center">
+                            <div class="redraw-star">✦</div>
+                        </div>
+                    </div>
+                    <div class="redraw-text">命运再次指引...</div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- 隐藏的Canvas用于生成分享图片 -->
+    <canvas id="shareCanvas" style="display: none;"></canvas>
+    
     <script src="script.js"></script>
 </body>
 </html>

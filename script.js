@@ -265,22 +265,317 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 2500);
     }
 
-    // 重新抽取命运
+    // 显示重新抽取覆盖层
+    function showRedrawOverlay() {
+        const overlay = document.getElementById('redrawOverlay');
+        if (overlay) {
+            overlay.classList.add('active');
+        }
+    }
+
+    // 隐藏重新抽取覆盖层
+    function hideRedrawOverlay() {
+        const overlay = document.getElementById('redrawOverlay');
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+    }
+
+    // 重新抽取命运（带动画）
     function reDrawFortune() {
-        const fortune = drawFortune();
+        const drawButton = document.getElementById('drawButton');
+        const shareButton = document.getElementById('shareButton');
+        
+        // 禁用按钮防止重复点击
+        drawButton.disabled = true;
+        if (shareButton) shareButton.disabled = true;
+        
+        // 显示覆盖层动画
+        showRedrawOverlay();
+        
+        // 模拟抽取过程
+        setTimeout(() => {
+            const fortune = drawFortune();
+            const cardContent = document.querySelector('.card-content');
+            
+            // 隐藏覆盖层
+            hideRedrawOverlay();
+            
+            // 给卡片添加翻转动画
+            if (cardContent) {
+                cardContent.classList.remove('content-switch');
+                void cardContent.offsetWidth;
+                cardContent.classList.add('content-switch');
+            }
+            
+            // 更新显示
+            updateFortuneDisplay(fortune);
+            
+            // 重新启用按钮
+            drawButton.disabled = false;
+            if (shareButton) shareButton.disabled = false;
+        }, 1500);
+    }
+
+    // 创建分享提示
+    function createShareToast() {
+        const toast = document.createElement('div');
+        toast.className = 'share-toast';
+        toast.id = 'shareToast';
+        document.body.appendChild(toast);
+        return toast;
+    }
+
+    // 显示分享提示
+    function showShareToast(message) {
+        let toast = document.getElementById('shareToast');
+        if (!toast) {
+            toast = createShareToast();
+        }
+        toast.textContent = message;
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    // 绘制分享图片到Canvas
+    function drawShareImage(fortune) {
+        const canvas = document.getElementById('shareCanvas');
+        if (!canvas) return null;
+        
+        const ctx = canvas.getContext('2d');
+        
+        // 设置Canvas尺寸（适合分享的尺寸）
+        const width = 600;
+        const height = 800;
+        canvas.width = width;
+        canvas.height = height;
+        
+        // 绘制背景渐变
+        const gradient = ctx.createLinearGradient(0, 0, width, height);
+        gradient.addColorStop(0, '#1a1a2e');
+        gradient.addColorStop(0.5, '#16213e');
+        gradient.addColorStop(1, '#0f3460');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+        
+        // 绘制边框装饰
+        ctx.strokeStyle = '#d4af37';
+        ctx.lineWidth = 3;
+        ctx.strokeRect(30, 30, width - 60, height - 60);
+        
+        // 绘制角落装饰
+        const cornerSize = 40;
+        ctx.strokeStyle = '#d4af37';
+        ctx.lineWidth = 2;
+        
+        // 左上角
+        ctx.beginPath();
+        ctx.moveTo(50, 50);
+        ctx.lineTo(50, 90);
+        ctx.moveTo(50, 50);
+        ctx.lineTo(90, 50);
+        ctx.stroke();
+        
+        // 右上角
+        ctx.beginPath();
+        ctx.moveTo(width - 50, 50);
+        ctx.lineTo(width - 50, 90);
+        ctx.moveTo(width - 50, 50);
+        ctx.lineTo(width - 90, 50);
+        ctx.stroke();
+        
+        // 左下角
+        ctx.beginPath();
+        ctx.moveTo(50, height - 50);
+        ctx.lineTo(50, height - 90);
+        ctx.moveTo(50, height - 50);
+        ctx.lineTo(90, height - 50);
+        ctx.stroke();
+        
+        // 右下角
+        ctx.beginPath();
+        ctx.moveTo(width - 50, height - 50);
+        ctx.lineTo(width - 50, height - 90);
+        ctx.moveTo(width - 50, height - 50);
+        ctx.lineTo(width - 90, height - 50);
+        ctx.stroke();
+        
+        // 绘制标题
+        ctx.font = 'bold 32px "Georgia", serif';
+        ctx.fillStyle = '#d4af37';
+        ctx.textAlign = 'center';
+        ctx.fillText('命 运 之 书', width / 2, 100);
+        
+        // 绘制副标题
+        ctx.font = '16px "Georgia", serif';
+        ctx.fillStyle = '#f0e68c';
+        ctx.globalAlpha = 0.8;
+        ctx.fillText('Book of Destiny', width / 2, 130);
+        ctx.globalAlpha = 1;
+        
+        // 绘制分隔线
+        ctx.strokeStyle = '#d4af37';
+        ctx.lineWidth = 1;
+        ctx.globalAlpha = 0.5;
+        ctx.beginPath();
+        ctx.moveTo(100, 170);
+        ctx.lineTo(width - 100, 170);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+        
+        // 绘制命运编号
+        ctx.font = '18px "Georgia", serif';
+        ctx.fillStyle = '#f0e68c';
+        ctx.globalAlpha = 0.8;
+        ctx.fillText(`第 ${fortune.id} 号命运`, width / 2, 220);
+        ctx.globalAlpha = 1;
+        
+        // 绘制星星装饰
+        ctx.font = '24px serif';
+        ctx.fillStyle = '#d4af37';
+        ctx.fillText('✦', width / 2, 260);
+        
+        // 绘制文案内容（支持换行）
+        const maxWidth = 450;
+        const lineHeight = 40;
+        const startY = 320;
+        
+        ctx.font = '22px "Georgia", serif';
+        ctx.fillStyle = '#f5f5dc';
+        ctx.textAlign = 'center';
+        
+        const words = fortune.text.split('');
+        let line = '';
+        let lines = [];
+        let testLine = '';
+        
+        for (let i = 0; i < words.length; i++) {
+            testLine = line + words[i];
+            const metrics = ctx.measureText(testLine);
+            if (metrics.width > maxWidth && i > 0) {
+                lines.push(line);
+                line = words[i];
+            } else {
+                line = testLine;
+            }
+        }
+        lines.push(line);
+        
+        // 计算起始Y位置以居中
+        const contentHeight = lines.length * lineHeight;
+        const contentStartY = startY + (200 - contentHeight) / 2;
+        
+        lines.forEach(function(lineText, index) {
+            ctx.fillText(lineText, width / 2, contentStartY + (index * lineHeight));
+        });
+        
+        // 绘制标签
+        const tagY = contentStartY + lines.length * lineHeight + 50;
+        
+        // 标签背景
+        ctx.fillStyle = 'rgba(212, 175, 55, 0.2)';
+        ctx.strokeStyle = '#d4af37';
+        ctx.lineWidth = 1;
+        
+        const tagWidth = ctx.measureText(fortune.tag).width + 60;
+        const tagHeight = 40;
+        const tagX = (width - tagWidth) / 2;
+        
+        roundRect(ctx, tagX, tagY, tagWidth, tagHeight, 20);
+        ctx.fill();
+        ctx.stroke();
+        
+        // 标签文字
+        ctx.font = '16px "Georgia", serif';
+        ctx.fillStyle = '#f0e68c';
+        ctx.textAlign = 'center';
+        ctx.fillText(fortune.tag, width / 2, tagY + 27);
+        
+        // 绘制底部信息
+        ctx.font = '14px "Georgia", serif';
+        ctx.fillStyle = '#d4af37';
+        ctx.globalAlpha = 0.6;
+        ctx.fillText('长按保存，分享这份温暖 ✦', width / 2, height - 50);
+        ctx.globalAlpha = 1;
+        
+        return canvas;
+    }
+
+    // 绘制圆角矩形辅助函数
+    function roundRect(ctx, x, y, width, height, radius) {
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + width - radius, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+        ctx.lineTo(x + width, y + height - radius);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        ctx.lineTo(x + radius, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+        ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y);
+        ctx.closePath();
+    }
+
+    // 分享功能
+    function shareFortune() {
+        const fortuneNumberDisplay = document.getElementById('fortuneNumberDisplay');
         const fortuneMessage = document.getElementById('fortuneMessage');
+        const categoryText = document.getElementById('categoryText');
         
-        // 移除之前的动画类
-        fortuneMessage.classList.remove('text-reveal');
+        if (!fortuneNumberDisplay || !fortuneMessage || !categoryText) {
+            showShareToast('无法获取当前命运信息');
+            return;
+        }
         
-        // 强制重排
-        void fortuneMessage.offsetWidth;
+        // 解析当前显示的命运数据
+        const numberMatch = fortuneNumberDisplay.textContent.match(/第 (\d+) 号命运/);
+        const id = numberMatch ? parseInt(numberMatch[1]) : 0;
+        const text = fortuneMessage.textContent;
+        const tag = categoryText.textContent;
         
-        // 更新显示
-        updateFortuneDisplay(fortune);
+        const fortune = {
+            id: id,
+            text: text,
+            tag: tag
+        };
         
-        // 重新添加动画类
-        fortuneMessage.classList.add('text-reveal');
+        // 绘制图片
+        const canvas = drawShareImage(fortune);
+        if (!canvas) {
+            showShareToast('生成图片失败，请重试');
+            return;
+        }
+        
+        try {
+            // 转换为图片并下载
+            const dataURL = canvas.toDataURL('image/png');
+            
+            // 创建下载链接
+            const link = document.createElement('a');
+            link.download = `命运之书_第${fortune.id}号命运.png`;
+            link.href = dataURL;
+            
+            // 触发下载
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showShareToast('图片已生成，正在下载...');
+        } catch (error) {
+            console.error('分享失败:', error);
+            
+            // 如果下载失败，尝试在新窗口打开
+            try {
+                const dataURL = canvas.toDataURL('image/png');
+                window.open(dataURL, '_blank');
+                showShareToast('图片已在新窗口打开，请长按保存');
+            } catch (e) {
+                showShareToast('生成图片失败，请截图保存');
+            }
+        }
     }
 
     // 初始化事件监听
@@ -314,6 +609,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.style.transform = '';
                 }, 100);
                 reDrawFortune();
+            });
+        }
+        
+        const shareButton = document.getElementById('shareButton');
+        if (shareButton) {
+            shareButton.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+                shareFortune();
             });
         }
     }
